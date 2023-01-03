@@ -20,7 +20,9 @@ class EntitiesController < ApplicationController
   end
 
   # POST /entities or /entities.json
+
   def create
+debugger
     @entity = Entity.new(entity_params)
 
     respond_to do |format|
@@ -65,6 +67,6 @@ class EntitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entity_params
-      params.require(:entity).permit(:authorId, :name, :amount)
+      params.require(:entity).permit(:user, :name, :amount)
     end
 end

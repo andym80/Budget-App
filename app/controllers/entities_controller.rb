@@ -22,8 +22,8 @@ class EntitiesController < ApplicationController
   # POST /entities or /entities.json
 
   def create
-debugger
     @entity = Entity.new(entity_params)
+    @entity.user = current_user
 
     respond_to do |format|
       if @entity.save

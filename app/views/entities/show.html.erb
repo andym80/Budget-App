@@ -1,10 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<% if can? :manage, @group %>
+<section class="entities-container">
+<p style="color: green"><%= alert %></p>
 
 <%= render @entity %>
 
-<div>
-  <%= link_to "Edit this entity", edit_entity_path(@entity) %> |
-  <%= link_to "Back to entities", entities_path %>
-
-  <%= button_to "Destroy this entity", @entity, method: :delete %>
+<div class="group-buttons">
+  <%= link_to image_tag('edit.png'), edit_group_entity_path(@group, @entity), class: 'group-edit-button' %> |
+  <%= link_to image_tag('trash.png'), group_entities_path(@group, @entity), method: :delete, class: 'group-destroy-button' %>
 </div>
+
+  <%= button_to "Back to spendings", group_entities_path, class: 'back-button' %>
+</section>
+<% else %>
+  <p>Exit</p>

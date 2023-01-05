@@ -1,9 +1,17 @@
-<h1>New entity</h1>
-
-<%= render "form", entity: @entity %>
-
-<br>
-
+<% if can? :manage, @group %>
 <div>
-  <%= link_to "Back to entities", entities_path %>
+  <%= render @group %>
+
+<div class="edit-group-container">
 </div>
+   <%= render "form", establishment: @establishment %>
+</div>
+
+
+  <%= link_to "Back to entities", group_entities_path(@group), class:"back-button" %>
+</div>
+</div>
+<% else %>
+  "Exit"
+<% end %>
+

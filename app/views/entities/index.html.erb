@@ -1,14 +1,38 @@
+<% if can? :manage, @group %>
+  <section class="selection-container">
+    <span>Most recent</span>
+    <span><% link_to "settings", edit_user_registration_path %></span>
+  </section>
+
+  <section class="user-container">
+  <div>
+    <strong><%= current_user.name %> </strong>
+    </div>
+  <span class="red-price">
+   <strong><%= number_to_currency(@group.entities.sum(:amount)) %></strong>
+  </span>
+  </section>
+
+<section class="entities-container">
 <p style="color: green"><%= notice %></p>
 
-<h1>Entities</h1>
-
-<div id="entities">
+<div class="entities">
   <% @entities.each do |entity| %>
+  <% if can? :manage, entities %>
+      <%= link_to(group_entities_path(@group, entity)) do %>
     <%= render entity %>
-    <p>
-      <%= link_to "Show this entity", entity %>
-    </p>
   <% end %>
+   <% end %>
+    <% end %>
 </div>
 
-<%= link_to "New entity", new_entity_path %>
+<%= link_to "Back to groups", group_path, class:'back-button' %>
+
+<div class="green-button-div">
+  <%= link_to "New entity", new_group_entity_path(@group), class:'green-button' %>
+</div>
+</section>
+<% else %>
+  <p>Exit</p>
+<% end %>
+

@@ -1,10 +1,17 @@
-<h1>Editing entity</h1>
-
-<%= render "form", entity: @entity %>
-
-<br>
-
+<% if can? :manage, @group %>
 <div>
-  <%= link_to "Show this entity", @entity %> |
-  <%= link_to "Back to entities", entities_path %>
+<h1>Editing spending</h1>
+
+<div class="edit-group-container">
+<div>
+<%= render "form", entity: @entity %>
 </div>
+
+
+  <%= link_to "Back to entities", entities_path, class:"back-button" %>
+  <%= link_to "Show this entity", @entity %>
+</div>
+</div>
+<% else %>
+ "Exit"
+<% end %>

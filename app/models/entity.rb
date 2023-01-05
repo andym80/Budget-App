@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# Entity model
 class Entity < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :groups

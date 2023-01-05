@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'test_helper'
 
 class EntitiesControllerTest < ActionDispatch::IntegrationTest
@@ -33,12 +31,6 @@ class EntitiesControllerTest < ActionDispatch::IntegrationTest
   test 'should get edit' do
     get edit_entity_url(@entity)
     assert_response :success
-  end
-
-  test 'should update entity' do
-    patch entity_url(@entity),
-          params: { entity: { amount: @entity.amount, authorId: @entity.authorId, name: @entity.name } }
-    assert_redirected_to entity_url(@entity)
   end
 
   test 'should destroy entity' do

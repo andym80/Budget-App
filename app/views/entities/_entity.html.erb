@@ -1,13 +1,23 @@
 <div id="<%= dom_id entity %>">
+  <%= group.icon %>
+</div>
 
-  <p>
-    <strong>Name:</strong>
-    <%= entity.name %>
+  <div class="entity-info">
+    <p>
+      <strong>Name:</strong>
+      <%= entity.name %>
   </p>
+  <p>
+    <strong><span class="red-price"><%= number_to_currency(establishment.amount) %></span></strong>
+  </p>
+</div>
 
   <p>
     <strong>Amount:</strong>
     <%= entity.amount %>
+  </p>
+  <p>
+    <small class="entity-date"><%= entity.created_at.strftime("%e %b %y") %></small>
   </p>
 
 </div>
